@@ -29,6 +29,54 @@ ApplicationWindow {
                                             })
                 }
             }
+            Button {
+                text: "Generate";
+                onClicked: {
+                    for(var i = 0; i < patternListModel.count; i++) {
+                        var obj = patternListModel.get(i);
+                        var sum = obj.topV*1 + obj.midV*4 + obj.botV*9
+
+                        /*
+                         *
+                         * 0 = TOP_MID
+                         * 1 = MID_BOT
+                         * 2 = TOP
+                         * 3 = BOT
+                         * 4 = MID_1
+                         * 5 = MID_2
+                         * 6 = BLANK
+                         *
+                         */
+
+                        switch(sum) {
+                        case 0:
+                            console.log("6,6,")
+                            break
+                        case 1:
+                            console.log("2,6,")
+                            break
+                        case 4:
+                            console.log("4,5,")
+                            break
+                        case 5:
+                            console.log("0,5,")
+                            break
+                        case 9:
+                            console.log("6,3,")
+                            break
+                        case 10:
+                            console.log("2,3,")
+                            break
+                        case 13:
+                            console.log("4,1,")
+                            break
+                        case 14:
+                            console.log("0,1,")
+                            break
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -46,7 +94,7 @@ ApplicationWindow {
         }
 
         delegate: Rectangle {
-            width:parent.width; height: root.height/4
+            width:parent.width; height: root.height/8
             color: Material.accent
             Row {
                 height: parent.height*0.9; width: parent.width*0.9
